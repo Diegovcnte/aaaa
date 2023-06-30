@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>>ArcadeGames - Login</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Permanent+Marker'>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+
+    <style>
+        body {
+            background-image: url(css/Recursos_Visuales/fondos/intentofondo.png);
+            background-size: 100%;
+        }
+    </style>
+
+</head>
+
+<body class="login">
+    <div class="login-box">
+        <h2>Iniciar sesión</h2>
+        <form>
+            <div class="user-box">
+                <input type="text" name="username" id="username" required="">
+                <label>Nombre de usuario</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" id="password" required="">
+                <label>Contraseña</label>
+            </div>
+            <div style="color: rgb(254, 10, 10);" id="alerta"></div>
+            <div>
+                <button style="background-color: transparent; border:0" type="button" class="in_confirm"
+                    id="in_confirm">Ingresar</button>
+                <button style="background-color: transparent; border:0" type="button" class="in_register"
+                    id="in_register">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#in_confirm').on('click', function (e) {
+            e.preventDefault();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if (username != 'asd123') {
+                $('#alerta').html('<div class="alert alert-danger" role="alert">El nombre de usuario es incorrecto</div>');
+            } else if (password != 'asd123') {
+                $('#alerta').html('<div class="alert alert-danger" role="alert">La contraseña es incorrecta</div>');
+            } else {
+                $('#alerta').html('<div class="alert alert-success" role="alert">Ingreso exitoso</div>');
+                window.location.href = 'Index.html';
+
+            };
+        })
+        $('#in_register').on('click', function () {
+            window.location.href = 'registrar.html';
+        });
+    });
+</script>
+
+</html>

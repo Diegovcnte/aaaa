@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>>ArcadeGames</title>
+  {% load bootstrap5}
+  {% bootstrap_css %}
+  {% bootstrap_javascript%}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css'}">
+
+  <script>
+function getRandomLink() {
+    var links = [
+      "{% url 'pacman' %}",
+      "{% url 'pinpong' %}",
+      "{% url 'flappydino' %}",
+      "{% url 'tetris' %}"
+    ];
+    var randomIndex = Math.floor(Math.random() * links.length);
+    return links[randomIndex];
+  }
+  </script>
+
+  <style>
+    body{
+      background-image: url("{% static 'img/intentofondo.png' %}");
+      background-size:100%;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <header>
+    <!-- Inicio del menu -->
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
+      <div class="container-fluid ">
+        <!-- icono o nombre -->
+
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/console-controller.svg' %}" alt="Logo" width="30" height="30"
+            class="d-inline-block align-text-top">
+          <span class="text-warning">ArcadeGames</span>
+        </a>
+
+        <!-- boton del menu -->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- elementos del menu colapsable -->
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active navtext" aria-current="page"
+                href="{% url 'index' %}"><span>Home</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navtext" href="#" onclick="window.location.href=getRandomLink()"><span>Clásicos</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link navtext" href="{% url 'foro' %}"><span>Comunidad</span></a>
+            </li>
+
+          </ul>
+
+          <hr class="d-md-none text-white-50">
+
+          <!-- enlaces redes sociales -->
+
+          <ul class="navbar-nav  flex-row flex-wrap text-light">
+
+            <li class="nav-item col-6 col-md-auto p-3">
+              <a href="https://twitter.com/?lang=es"><img src="{% static 'img/logo_twitter.svg' %}" alt="Logo" width="36" height="30"
+                  class="d-inline-block align-text-top"></a>
+              <small class="d-md-none ms-2">Twitter</small>
+            </li>
+
+            <li class="nav-item col-6 col-md-auto p-3">
+              <a href="https://www.youtube.com/"><img src="{% static 'img/logo_youtube-3.svg' %}" alt="Logo" width="36" height="30"
+                  class="d-inline-block align-text-top"></a>
+              <small class="d-md-none ms-2">Youtube</small>
+            </li>
+
+            <li class="nav-item col-6 col-md-auto p-3">
+              <a href="https://www.instagram.com/"><img src="{% static 'img/logo_instagram.svg' %}" alt="Logo" width="30" height="28"
+                  class="d-inline-block align-text-top"></a>
+              <small class="d-md-none ms-2">Instagram</small>
+            </li>
+
+            <li class="nav-item col-6 col-md-auto p-3">
+              <a href="https://www.facebook.com/"><img src="{% static 'img/logo_facebook.svg' %}" alt="Logo" width="30" height="30"
+                  class="d-inline-block align-text-top"></a>
+              <small class="d-md-none ms-2">Facebook</small>
+            </li>
+            <li>
+              <a href="{% url 'IniciarSesion' %}"><svg xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-user-circle" width="60" height="60" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="#FFFF00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="10" r="3" />
+                  <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+    </nav>
+
+    <main>
+
+      <!-- Slice de carrusel -->
+      <div id="main-carousel" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Botones interactivos "indicators" -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+
+        </div>
+
+        <!-- CARRUSEL!!! -->
+        <div class="carousel-inner">
+
+          <div class="carousel-item active c-slide">
+            <a href="{% url 'pacman' %}"><img
+                src="{% static 'img/pacmanbanner.svg' %}" class="d-block w-100 img-slide" alt="slice 1"></a>
+
+
+
+          </div>
+
+          <div class="carousel-item c-slide">
+            <a href="{% url 'pinpong' %}"> <img src="{% static 'img/pongbanner.svg' %}" class="d-block w-100 img-slide" alt="slice 2"></a>
+
+
+          </div>
+
+          <div class="carousel-item c-slide">
+            <a href="{% url 'flappydino' %}"><img src="{% static 'img/flappybanner2.svg' %}" class="d-block w-100 img-slide" alt="slice 3"></a>
+
+
+
+          </div>
+
+          <div class="carousel-item c-slide">
+            <a class="linkcarousel" href="{% url 'tetris' %}"><img src="{% static 'img/tetrisbanner.svg' %}" class="d-block w-100 img-slide"
+                alt="slice 4"></a>
+
+
+          </div>
+
+          <!-- controles del carrusel!!! -->
+          <button class="carousel-control-prev control-carousel" type="button" data-bs-target="#main-carousel"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#main-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </main>
+
+
+
+    <section>
+
+      <!-- ROW DE DIFERENTES JUEGOS usamos sistema de grillas para dar dimensiones. Lo repeti como 5 veces para impresion de llenado XD -->
+      <div class="container-fluid">
+        
+        <div class="row">
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/tazita.png' %}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <a href="{% url 'tazita' %}" class="txtcard">
+                  <p class="card-text">TWO CUPS</p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/bob.png' %}"class="card-img-top" alt="...">
+                
+              <div class="card-body">
+                <a href="{% url 'bob' %}" class="txtcard">
+                  <p class="card-text">BOBB'S WORLD</p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/chicas.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{%url 'mydreamy'%}" class="txtcard">
+                  <p class="  card-text ">MY DREAMY FLORA </p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/65edb8c3a45946bc8d83427939453087/index.html?timestamp=1680204596&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fmahjong-sweet-connection&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL21haGpvbmctc3dlZXQtY29ubmVjdGlvbiIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/boat.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'boat'%}" class="txtcard">
+                  <p class="card-text">CRAZY BOAT ADVENTURE</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/3ff269efa47241d68808d3ba9f822a41/index.html?timestamp=1680205995&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fsolitario-spider-clasico-&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3NvbGl0YXJpby1zcGlkZXItY2xhc2ljby0iLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/miner.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'miner' %}" class="txtcard">
+                  <p class="card-text">MERGE MINE - IDLE CLICKER</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/ab22c7eac8304315bacec0f5ef1b72c2/index.html?timestamp=1680205728&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fgoldie-botox-labial&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL2dvbGRpZS1ib3RveC1sYWJpYWwiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+        
+
+
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/tazita.png' %}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <a href="{% url 'tazita' %}" class="txtcard">
+                  <p class="card-text">TWO CUPS</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/d31aa2e701b444f2be590f322fae0d9d/index.html?timestamp=1680204144&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Frevolution-offroad&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3Jldm9sdXRpb24tb2Zmcm9hZCIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card " style="width: 16rem;">
+              <img src="{% static 'img/bob.png' %}"class="card-img-top" alt="...">
+
+              <div class="card-body">
+                <a href="{% url 'bob.html' %}" class="txtcard">
+                  <p class="card-text">BOBB'S WORLD</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/a55c9cc9c21e4fc683c8c6857f3d0c75/index.html?timestamp=1680204267&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fnino-fuego-y-nina-agua-templo-agreste&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL25pbm8tZnVlZ28teS1uaW5hLWFndWEtdGVtcGxvLWFncmVzdGUiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/chicas.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'mydreamy' %}" class="txtcard">
+                  <p class="  card-text ">MY DREAMY FLORA </p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/65edb8c3a45946bc8d83427939453087/index.html?timestamp=1680204596&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fmahjong-sweet-connection&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL21haGpvbmctc3dlZXQtY29ubmVjdGlvbiIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/boat.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'boat'%}" class="txtcard">
+                  <p class="card-text">CRAZY BOAT ADVENTURE</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/3ff269efa47241d68808d3ba9f822a41/index.html?timestamp=1680205995&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fsolitario-spider-clasico-&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3NvbGl0YXJpby1zcGlkZXItY2xhc2ljby0iLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/miner.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'miner' %}" class="txtcard">
+                  <p class="card-text">MERGE MINE - IDLE CLICKER</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/ab22c7eac8304315bacec0f5ef1b72c2/index.html?timestamp=1680205728&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fgoldie-botox-labial&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL2dvbGRpZS1ib3RveC1sYWJpYWwiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/tazita.png' %}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <a href="{% url 'tazita' %}" class="txtcard">
+                  <p class="card-text">TWO CUPS</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/d31aa2e701b444f2be590f322fae0d9d/index.html?timestamp=1680204144&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Frevolution-offroad&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3Jldm9sdXRpb24tb2Zmcm9hZCIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card " style="width: 16rem;">
+              <img src="{% static 'img/bob.png' %}"class="card-img-top" alt="...">
+
+              <div class="card-body">
+                <a href="{% url 'bob.html' %}" class="txtcard">
+                  <p class="card-text">BOBB'S WORLD</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/a55c9cc9c21e4fc683c8c6857f3d0c75/index.html?timestamp=1680204267&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fnino-fuego-y-nina-agua-templo-agreste&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL25pbm8tZnVlZ28teS1uaW5hLWFndWEtdGVtcGxvLWFncmVzdGUiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/chicas.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'mydreamy' %}" class="txtcard">
+                  <p class="  card-text ">MY DREAMY FLORA </p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/65edb8c3a45946bc8d83427939453087/index.html?timestamp=1680204596&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fmahjong-sweet-connection&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL21haGpvbmctc3dlZXQtY29ubmVjdGlvbiIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/boat.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'boat'%}" class="txtcard">
+                  <p class="card-text">CRAZY BOAT ADVENTURE</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/3ff269efa47241d68808d3ba9f822a41/index.html?timestamp=1680205995&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fsolitario-spider-clasico-&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3NvbGl0YXJpby1zcGlkZXItY2xhc2ljby0iLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/miner.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'miner' %}" class="txtcard">
+                  <p class="card-text">MERGE MINE - IDLE CLICKER</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/ab22c7eac8304315bacec0f5ef1b72c2/index.html?timestamp=1680205728&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fgoldie-botox-labial&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL2dvbGRpZS1ib3RveC1sYWJpYWwiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/tazita.png' %}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <a href="{% url 'tazita' %}" class="txtcard">
+                  <p class="card-text">TWO CUPS</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/d31aa2e701b444f2be590f322fae0d9d/index.html?timestamp=1680204144&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Frevolution-offroad&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3Jldm9sdXRpb24tb2Zmcm9hZCIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card " style="width: 16rem;">
+              <img src="{% static 'img/bob.png' %}"class="card-img-top" alt="...">
+
+              <div class="card-body">
+                <a href="{% url 'bob.html' %}" class="txtcard">
+                  <p class="card-text">BOBB'S WORLD</p>
+                </a>
+                <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/a55c9cc9c21e4fc683c8c6857f3d0c75/index.html?timestamp=1680204267&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fnino-fuego-y-nina-agua-templo-agreste&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL25pbm8tZnVlZ28teS1uaW5hLWFndWEtdGVtcGxvLWFncmVzdGUiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/chicas.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'mydreamy' %}" class="txtcard">
+                  <p class="  card-text ">MY DREAMY FLORA </p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/65edb8c3a45946bc8d83427939453087/index.html?timestamp=1680204596&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fmahjong-sweet-connection&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL21haGpvbmctc3dlZXQtY29ubmVjdGlvbiIsInBhcmVudERvbWFpbiI6Imp1ZWdvcy5jb20iLCJ0b3BEb21haW4iOiJqdWVnb3MuY29tIiwiaGFzSW1wcmVzc2lvbiI6ZmFsc2UsImxvYWRlckVuYWJsZWQiOnRydWUsImhvc3QiOiJodG1sNS5nYW1lZGlzdHJpYnV0aW9uLmNvbSIsInZlcnNpb24iOiIxLjUuMTYifQ%253D%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/boat.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'boat'%}" class="txtcard">
+                  <p class="card-text">CRAZY BOAT ADVENTURE</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/3ff269efa47241d68808d3ba9f822a41/index.html?timestamp=1680205995&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fsolitario-spider-clasico-&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL3NvbGl0YXJpby1zcGlkZXItY2xhc2ljby0iLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-deck col-sm-4 col-md-3 col-lg-2 cardcontenedor">
+            <div class="card" style="width: 16rem;">
+              <img src="{% static 'img/miner.png' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="{% url 'miner' %}" class="txtcard">
+                  <p class="card-text">MERGE MINE - IDLE CLICKER</p>
+                  <!-- <iframe id="game" frameborder="0" allow="autoplay" allowfullscreen="" seamless="" scrolling="no" src="//html5.gamedistribution.com/rvvASMiM/ab22c7eac8304315bacec0f5ef1b72c2/index.html?timestamp=1680205728&amp;countryCode=es&amp;siteid=88&amp;channelid=1&amp;siteLocale=es&amp;locale=es&amp;gd_sdk_referrer_url=https%3A%2F%2Fwww.juegos.com%2Fjuego%2Fgoldie-botox-labial&amp;gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL3d3dy5qdWVnb3MuY29tL2p1ZWdvL2dvbGRpZS1ib3RveC1sYWJpYWwiLCJwYXJlbnREb21haW4iOiJqdWVnb3MuY29tIiwidG9wRG9tYWluIjoianVlZ29zLmNvbSIsImhhc0ltcHJlc3Npb24iOmZhbHNlLCJsb2FkZXJFbmFibGVkIjp0cnVlLCJob3N0IjoiaHRtbDUuZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ2ZXJzaW9uIjoiMS41LjE2In0%253D"></iframe> -->
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      
+
+
+
+    </section>
+
+    <!-- FOOTER cabros si alguien lee esto y se le ocurre q mas poner en el footer bienvenido sea -->
+    <footer>
+      <div class="footer-content">
+        <h3>ArcadeGames</h3>
+        <ul class="socials">
+          <li><a href="https://youtu.be/dQw4w9WgXcQ">Contacto</a></li>
+          <li><a href="https://youtu.be/dQw4w9WgXcQ">Contacto</a></li>
+          <li><a href="https://youtu.be/dQw4w9WgXcQ">Contacto</a></li>
+          <li><a href="https://youtu.be/dQw4w9WgXcQ">Contacto</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>copyright &copy;2023 <span>ARCADE GAMES & MORE INC.</span> Todos los derechos reservados.
+      </div>
+    </footer>
+
+  </header>
+
+  
+</body>
+
+</html>

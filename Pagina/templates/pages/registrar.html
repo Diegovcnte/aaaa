@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>>ArcadeGames - Register</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Permanent+Marker'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <style>
+    body {
+      background-image: url(css/Recursos_Visuales/fondos/intentofondo.png);
+      background-size: 100%;
+    }
+  </style>
+
+</head>
+
+<body class="register">
+  <div class="register-box">
+    <h2>Registrar</h2>
+    <form>
+      <div class="user-box">
+        <input type="text" name="r_username" id="r_username" required="">
+        <label>Nombre de usuario</label>
+      </div>
+      <div class="user-box">
+        <input type="text" name="r_email" id="r_email" required="">
+        <label>Correo</label>
+
+      </div>
+      <div class="user-box">
+        <input type="password" name="r_password" id="r_password" required="">
+        <label>Contraseña</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="r_con_password" id="r_con_password" required="">
+        <label>Confirme Contraseña</label>
+      </div>
+      <div style="color: rgb(254, 10, 10);" id="alerta"></div>
+
+      <div>
+        <button style="background-color: transparent; border:0" type="button" class="in_confirm"
+          id="in_confirm">Registrarse</button>
+        <button style="background-color: transparent; border:0" type="button" class="in_register"
+          id="in_return">Volver</button>
+      </div>
+    </form>
+  </div>
+</body>
+<script src="css/js/bootstrap.bundle.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#in_confirm').on('click', function (e) {
+      e.preventDefault();
+      var username = $('#r_username').val();
+      var email = $('#r_email').val();
+      var password = $('#r_password').val();
+      var con_password = $('#r_con_password').val();
+
+      if (username.length < 6) {
+        $('#alerta').html('<div class="alert alert-danger" role="alert">El nombre de usuario debe tener al menos 6 caracteres</div>');
+      } else if (!isValidEmail(email)) {
+        $('#alerta').html('<div class="alert alert-danger" role="alert">El correo electrónico no es válido</div>');
+      } else if (password.length < 6) {
+        $('#alerta').html('<div class="alert alert-danger" role="alert">La contraseña debe tener al menos 6 caracteres</div>');
+      } else if (password !== con_password) {
+        $('#alerta').html('<div class="alert alert-danger" role="alert">Las contraseñas no coinciden</div>');
+      } else {
+        $('form').submit();
+        $('#alerta').html('<div class="alert alert-success" role="alert">Registro exitoso</div>');
+      }
+    });
+    $('#in_return').on('click', function () {
+      window.location.href = 'index.html';
+    });
+  });
+
+  function isValidEmail(email) {
+    var emailRegex = /\S+@\S+\.\S+/;
+    return emailRegex.test(email);
+  }
+</script>
+
+</html>

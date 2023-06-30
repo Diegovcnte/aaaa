@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>>ArcadeGames -  HTML5 Pacman</title>
+  {% load bootstrap5}
+  {% bootstrap_css %}
+  {% bootstrap_javascript%}
+  {% load static %}
+  <script>
+    function getRandomLink() {
+        var links = [
+          "{% url 'pinpong' %}",
+          "{% url 'flappydino' %}",
+          "{% url 'tetris' %}"
+    
+        ];
+        var randomIndex = Math.floor(Math.random() * links.length);
+        return links[randomIndex];
+      }
+      </script>
+
+  <style>
+
+
+    h1 {
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+    color: yellow;
+    }
+
+    body {
+      width: 342px;
+      margin: 0px auto;
+      font-family: sans-serif;
+      background-color: black;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0000FF;
+    }
+  </style>
+
+</head>
+<body>
+
+ <!-- Inicio del menu -->
+
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- icono o nombre -->
+
+    <a class="navbar-brand" href="../index.html">
+      <img src="../css/Recursos_Visuales/iconos/console-controller.svg" alt="Logo" width="30" height="30"
+        class="d-inline-block align-text-top">
+      <span class="text-warning">ArcadeGames</span>
+    </a>
+
+    <!-- boton del menu -->
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- elementos del menu colapsable -->
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navtext" href="#" onclick="window.location.href=getRandomLink()">Clásicos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="../foro.html">Foro</a>
+        </li>
+
+      </ul>
+
+      <hr class="d-md-none text-white-50">
+
+      <!-- enlaces redes sociales -->
+
+      <ul class="navbar-nav  flex-row flex-wrap text-light">
+
+        <li class="nav-item col-6 col-md-auto p-3">
+          <a href="#"><img src="../css/Recursos_Visuales/iconos/logo_twitter.svg" alt="Logo" width="36" height="30"
+              class="d-inline-block align-text-top"></a>
+          <small class="d-md-none ms-2">Twitter</small>
+        </li>
+
+        <li class="nav-item col-6 col-md-auto p-3">
+          <a href="#"><img src="../css/Recursos_Visuales/iconos/logo_youtube-3.svg" alt="Logo" width="36" height="30"
+              class="d-inline-block align-text-top"></a>
+          <small class="d-md-none ms-2">Youtube</small>
+        </li>
+
+        <li class="nav-item col-6 col-md-auto p-3">
+          <a href="#"><img src="../css/Recursos_Visuales/iconos/logo_instagram.svg" alt="Logo" width="30" height="28"
+              class="d-inline-block align-text-top"></a>
+          <small class="d-md-none ms-2">Instagram</small>
+        </li>
+
+        <li class="nav-item col-6 col-md-auto p-3">
+          <a href="#"><img src="../css/Recursos_Visuales/iconos/logo_facebook.svg" alt="Logo" width="30" height="30"
+              class="d-inline-block align-text-top"></a>
+          <small class="d-md-none ms-2">Facebook</small>
+        </li>
+        <li>
+          <a href="../IniciarSesion.html"><svg xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-user-circle" width="60" height="60" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="#FFFF00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="10" r="3" />
+              <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+
+
+    </div>
+
+  </div>
+</nav>
+  
+<!-- partial:index.partial.html -->
+<div id="shim">shim for font face</div>
+
+<h1> Pacman</h1>
+
+<center><div id="pacman"></div></center>
+<!-- partial -->
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="{% static 'js/pacman.js'%}"></script>
+  
+
+</body>
+</html>

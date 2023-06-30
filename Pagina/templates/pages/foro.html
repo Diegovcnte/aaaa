@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>>ArcadeGames - Comunidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <b><link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet"></b>>
+
+    {% load bootstrap5}
+    {% bootstrap_css %}
+    {% bootstrap_javascript%}
+    {% load static %}
+
+
+    <style>
+
+        body{
+            background: url("{% static 'img/5.png' %}");   
+            background-size: cover;
+            background-position: center;
+        }
+            
+    </style>
+  <script>
+    function getRandomLink() {
+        var links = [
+         "{% url 'pacman' %}",
+         "{% url 'pinpong' %}",
+         "{% url 'flappydino' %}",
+         "{% url 'tetris' %}"
+        ];
+        var randomIndex = Math.floor(Math.random() * links.length);
+        return links[randomIndex];
+      }
+      </script>
+
+</head>
+<header>
+    <!-- Inicio del menu -->
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
+        <div class="container-fluid ">
+          <!-- icono o nombre -->
+  
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'img/console-controller.svg' %}" alt="Logo" width="30" height="30"
+              class="d-inline-block align-text-top">
+            <span class="text-warning">ArcadeGames</span>
+          </a>
+  
+          <!-- boton del menu -->
+  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- elementos del menu colapsable -->
+  
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active navtext" aria-current="page"
+                  href="{% url 'index' %}"><span>Home</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link navtext" href="#" onclick="window.location.href=getRandomLink()"><span>Clásicos</span></a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link navtext" href="{% url 'foro' %}"><span>Comunidad</span></a>
+              </li>
+  
+            </ul>
+  
+            <hr class="d-md-none text-white-50">
+  
+            <!-- enlaces redes sociales -->
+  
+            <ul class="navbar-nav  flex-row flex-wrap text-light">
+  
+              <li class="nav-item col-6 col-md-auto p-3">
+                <a href="https://twitter.com/?lang=es"><img src="{% static 'img/logo_twitter.svg' %}" alt="Logo" width="36" height="30"
+                    class="d-inline-block align-text-top"></a>
+                <small class="d-md-none ms-2">Twitter</small>
+              </li>
+  
+              <li class="nav-item col-6 col-md-auto p-3">
+                <a href="https://www.youtube.com/"><img src="{% static 'img/logo_youtube-3.svg' %}" alt="Logo" width="36" height="30"
+                    class="d-inline-block align-text-top"></a>
+                <small class="d-md-none ms-2">Youtube</small>
+              </li>
+  
+              <li class="nav-item col-6 col-md-auto p-3">
+                <a href="https://www.instagram.com/"><img src="{% static 'img/logo_instagram.svg' %}" alt="Logo" width="30" height="28"
+                    class="d-inline-block align-text-top"></a>
+                <small class="d-md-none ms-2">Instagram</small>
+              </li>
+  
+              <li class="nav-item col-6 col-md-auto p-3">
+                <a href="https://www.facebook.com/"><img src="{% static 'img/logo_facebook.svg' %}" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top"></a>
+                <small class="d-md-none ms-2">Facebook</small>
+              </li>
+              <li>
+                <a href="{% url 'IniciarSesion' %}"><svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="60" height="60" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="#FFFF00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="10" r="3" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+      </nav>
+
+<br>
+<br>
+<h1 class="retro">Comunidad </h1>
+
+    <section class="galeria">
+        <img src="{% static 'img/nagi.png' %}"> 
+        <img src="{% static 'img/cartman.png' %}">
+        <img src="{% static 'img/crash.png' %}">
+        <img src="{% static 'img/megumin.png' %}">
+    </section>
+    <div class="imagen-izquierda">
+        <a href="{% url 'pokedex' %}"> <img src="{% static 'img/pokemon_day.png' %}"  width="250" height="250" alt="Botón de imagen"></a>
+    
+    </div> 
+
+<body class="foro">
+    <div class="container">
+        <div class="row comentarios justify-content-center">
+            <div class="col-6">
+                <form action="" class="form_comentarios d-flex justify-content-end flex-wrap">
+                    <textarea name="" id="" placeholder="comentario"></textarea>
+                    <button class="btn" type="button">Comentar</button>
+                </form>
+
+                <div class="media">
+                    <img src="{% static 'img/takamura.jpg' %}" width="64" height="64" alt="">
+                    <div class="media-body c-style">
+                        <p class="nombre">Don taka <span>11:11am,hoy</span></p>
+                        <p class="comentario">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Nobis nam vitae iste repudiandae,
+                            reprehenderit nulla vel consequuntur labore ipsum dolorem! Aut eius error consequuntur
+                            ducimus rerum excepturi tempora consectetur sapiente.
+                        </p>
+                        <div class="botones text-right">
+                            <a href="#">Responder</a>
+                            <a href="#">Editar</a>
+                            <a href="#">Borrar</a>
+                        </div>
+
+                        <div class="media">
+                            <img src="{% static 'img/toallin.jpg' %}" width="64" height="64" alt="">
+                            <div class="media-body c-style">
+                                <p class="nombre"> Caza Frutas92 <span>2:11pm,hoy</span></p>
+                                <p class="comentario">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                    Nobis nam vitae iste repudiandae,
+                                    reprehenderit nulla vel consequuntur labore ipsum dolorem! Aut eius error
+                                    consequuntur
+                                    ducimus rerum excepturi tempora consectetur sapiente.
+                                </p>
+                                <div class="botones text-right">
+                                    <a href="#">Responder</a>
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                                <div class="media c-style">
+                                    <img src="{% static 'img/paty.jpg' %}" width="64" height="64" alt="">
+                                    <div class="media-body">
+                                        <p class="nombre">Simp Paty M <span>20:11pm,ayer</span></p>
+                                        <p class="comentario">
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            Nobis nam vitae iste repudiandae,
+                                            reprehenderit nulla vel consequuntur labore ipsum dolorem! Aut eius error
+                                            consequuntur
+                                            ducimus rerum excepturi tempora consectetur sapiente.
+                                        </p>
+                                        <div class="botones text-right">
+                                            <a href="#">Responder</a>
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <img src="{% static 'img/KennyMcCormick.jpg' %}" width="64" height="64" alt="">
+                            <div class="media-body c-style">
+                                <p class="nombre"> KennyInmotal <span>2:11pm,hoy</span></p>
+                                <p class="comentario">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                    Nobis nam vitae iste repudiandae,
+                                    reprehenderit nulla vel consequuntur labore ipsum dolorem! Aut eius error
+                                    consequuntur
+                                    ducimus rerum excepturi tempora consectetur sapiente.
+                                </p>
+                                <div class="botones text-right">
+                                    <a href="#">Responder</a>
+                                    <a href="#">Editar</a>
+                                    <a href="#">Borrar</a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
